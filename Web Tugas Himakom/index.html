@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Sahizidan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all .8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cursor-dot {
+      width: 12px;
+      height: 12px;
+      background: #2f2f34;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      transition: transform .08s linear, opacity .2s;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+  </style>
+
+  <script>
+    function scrollToId(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      function revealOnScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+
+        for (let i = 0; i < reveals.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = reveals[i].getBoundingClientRect().top;
+          const visible = 120;
+
+          if (elementTop < windowHeight - visible) {
+            reveals[i].classList.add('active');
+          }
+        }
+      }
+
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      document.addEventListener('mousemove', e => {
+        const dot = document.getElementById('cursorDot');
+        if (dot) {
+          dot.style.left = e.clientX + 'px';
+          dot.style.top = e.clientY + 'px';
+        }
+      });
+    });
+  </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <div id="cursorDot" class="cursor-dot"></div>
+
+  <header class="fixed w-full bg-white shadow z-50">
+    <nav class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <h1 class="font-bold text-xl hover:text-indigo-500 transition">
+        PortofolioSahizidan
+      </h1>
+      <div class="space-x-4 text-sm">
+        <button onclick="scrollToId('beranda')" class="hover:text-indigo-600 transition">Beranda</button>
+        <button onclick="scrollToId('profil')" class="hover:text-indigo-600 transition">Profil</button>
+        <button onclick="scrollToId('skill')" class="hover:text-indigo-600 transition">Skill</button>
+        <button onclick="scrollToId('tugas')" class="hover:text-indigo-600 transition">Penugasan</button>
+        <button onclick="scrollToId('project')" class="hover:text-indigo-600 transition">Proyek</button>
+        <button onclick="scrollToId('kontak')" class="hover:text-indigo-600 transition">Kontak</button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="beranda" class="min-h-screen flex items-center bg-gradient-to-br from-blue-100 to-indigo-200 pt-20">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6">
+      <div>
+        <h2 class="text-5xl font-bold mb-4">
+          Selamat Datang di Portofolio Saya
+        </h2>
+        <p class="text-lg text-gray-800">
+          Website portfolio ini dibuat sebagai bentuk personal branding
+          dan persyaratan seleksi Himakom.
+        </p>
+      </div>
+
+      <div class="flex justify-center">
+        <img src="Foto.jpeg"
+             class="w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-white">
+      </div>
+    </div>
+  </section>
+
+  <section id="profil" class="py-20 max-w-5xl mx-auto px-4 reveal">
+    <h2 class="text-3xl font-bold mb-6">Profil Diri</h2>
+
+    <p class="leading-relaxed">
+      <span class="font-semibold">Nama Lengkap:</span>
+      Sahizidan Lukman Hakim
+    </p>
+
+    <p class="leading-relaxed">
+      <span class="font-semibold">NIM:</span>
+      251511060
+    </p>
+
+    <p class="leading-relaxed">
+      <span class="font-semibold">Jurusan:</span>
+      Teknik Informatika
+    </p>
+
+    <p class="leading-relaxed">
+      Saya mahasiswa yang tertarik mempelajari public speaking dan teknologi.
+      Saya lebih tertarik mempelajari suatu hal secara langsung dibanding secara online.
+      Melalui himpunan, saya ingin mengembangkan kemampuan public speaking
+      dan kemampuan di bidang teknologi yang bermanfaat bagi mahasiswa.
+    </p>
+  </section>
+
+  <section id="skill" class="py-20 bg-gray-100 reveal">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Skill & Minat</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-xl shadow transition duration-300 card-hover">
+          <h3 class="font-semibold">Programming</h3>
+          <p>HTML, CSS</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow transition duration-300 card-hover">
+          <h3 class="font-semibold">Soft Skill</h3>
+          <p>Public Speaking, Teamwork</p>
+        </div>
+
+        <div class="bg-white p-4 rounded-xl shadow transition duration-300 card-hover">
+          <h3 class="font-semibold">Minat</h3>
+          <p>Organisasi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tugas" class="py-20 max-w-5xl mx-auto px-4 reveal">
+    <h2 class="text-3xl font-bold mb-6">Penugasan</h2>
+
+    <div class="space-y-8">
+
+      <div class="bg-white p-6 rounded-xl shadow-md card-hover text-center max-w-3xl mx-auto">
+        <h3 class="font-semibold text-lg mb-3">
+          Penugasan 2 - Format TOR Pergerakan
+        </h3>
+
+        <iframe src="Format TOR Pergerakan.pdf"
+                class="w-full h-[450px] rounded-lg border mb-6">
+        </iframe>
+
+        <a href="Format TOR Pergerakan.pdf" download
+           class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+          Download TOR
+        </a>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl shadow-md card-hover text-center max-w-3xl mx-auto">
+        <h3 class="font-semibold text-lg mb-3">
+          Penugasan 3 - Infografis
+        </h3>
+
+        <img src="Infografis politik.png"
+             class="rounded-lg mb-6 mx-auto max-w-xl">
+
+        <a href="Infografis politik.png" download
+           class="inline-block bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+          Download Infografis
+        </a>
+      </div>
+
+      <div class="bg-white p-8 rounded-2xl shadow-md text-center max-w-3xl mx-auto">
+
+  <h3 class="text-xl font-semibold text-indigo-700 mb-6">
+    Penugasan 4 - Video
+  </h3>
+
+  <iframe 
+    src="https://drive.google.com/file/d/1CdNr9qPjVGtKu71MfBtmM2bnzTX5UcJw/view?usp=drive_link"
+    class="w-full h-[500px] rounded-xl shadow-md mb-6"
+    allow="autoplay">
+  </iframe>
+
+  <a href="https://drive.google.com/file/d/1CdNr9qPjVGtKu71MfBtmM2bnzTX5UcJw/view"
+     target="_blank"
+     class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+     Buka di Google Drive
+  </a>
+
+</div>
+
+  </section>
+
+      <section id="project" class="py-24 bg-gray-50 reveal">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+      Portofolio & Proyek
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold text-indigo-700 mb-3">
+          Website Sederhana 
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-4">
+          Website statis pertama sebagai latihan memahami struktur HTML 
+          dan styling dasar menggunakan CSS.
+        </p>
+
+        <div class="flex gap-2 flex-wrap mb-4">
+          <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">HTML</span>
+          <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">CSS</span>
+        </div>
+
+        <a href="https://github.com/sahizidanlukman/ProyekWebSederhana" 
+           target="_blank"
+           class="inline-block text-indigo-600 text-sm font-medium hover:underline">
+           Lihat Website →
+        </a>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold text-indigo-700 mb-3">
+          Pengurus Ekstrakurikuler Paskibra
+        </h3>
+
+        <p class="text-sm text-gray-600 mb-4">
+          Bertanggung jawab dalam koordinasi latihan, pembinaan anggota, Lomba Paskibra,
+          serta persiapan kegiatan upacara resmi.
+        </p>
+
+        <div class="flex gap-2 flex-wrap">
+          <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">Leadership</span>
+          <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full">Teamwork</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <section id="kontak" class="py-20 max-w-5xl mx-auto px-4 text-center reveal">
+    <h2 class="text-3xl font-bold mb-6">Kontak</h2>
+
+    <div class="space-y-3 max-w-md mx-auto text-left">
+
+      <a href="mailto:sahizidanlukman.tif25@polban.ac.id"
+         class="flex items-center gap-3 hover:text-indigo-600 transition ">
+        <img src="email.png" class="w-5 h-5">
+        <span>sahizidanlukman.tif25@polban.ac.id</span>
+      </a>
+
+      <a href="https://wa.me/6281223006038" target="_blank"
+         class="flex items-center gap-3 hover:text-indigo-600 transition">
+        <img src="wa.jpg" class="w-5 h-5">
+        <span>+62 812-2300-6038</span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/sahizidan-lukman-hakim-54a8aa381/" target="_blank"
+         class="flex items-center gap-3 hover:text-indigo-600 transition">
+        <img src="linkedin.png" class="w-5 h-5">
+        <span>sahizidan-lukman-hakim-54a8aa381</span>
+      </a>
+
+      <a href="https://instagram.com/sahizidanlh" target="_blank"
+         class="flex items-center gap-3 hover:text-indigo-600 transition">
+        <img src="ig.jpg" class="w-5 h-5">
+        <span>@sahizidanlh</span>
+      </a>
+
+      <a href="https://github.com/sahizidanlukman" target="_blank"
+         class="flex items-center gap-3 hover:text-indigo-600 transition">
+        <img src="github.png" class="w-5 h-5">
+        <span>sahizidanlukman</span>
+      </a>
+
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white text-center p-4">
+    © 2026 Portfolio Sahizidan. All rights reserved.
+  </footer>
+
+</body>
+</html>
